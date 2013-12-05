@@ -23,7 +23,7 @@ setup(
   version=get_version(),
   description="Python Numerical Dynamics",
   author="Brian Blais",
-  packages=['pyndamics'],
+  packages=['pyndamics','pyndamics/mcmc'],
 )
 
 

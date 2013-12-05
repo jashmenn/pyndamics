@@ -6,6 +6,8 @@
 # # Using Pyndamics to Simulate Dynamical Systems
 # 
 # Pyndamics provides a way to describe a dynamical system in terms of the differential equations, or the stock-flow formalism. It is a wrapper around the Scipy odeint function, with further functionality for time plots, phase plots, and vector fields.
+# 
+# Page for this package: [https://code.google.com/p/pyndamics/](https://code.google.com/p/pyndamics/)
 
 # <codecell>
 

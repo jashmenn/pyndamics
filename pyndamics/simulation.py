@@ -885,7 +885,7 @@ class Simulation(object):
         self.maximum_t=t_max
         
         if not self.method=='odeint':
-            assert not self.use_func
+            #assert not self.use_func
             self.use_func=False
         
         

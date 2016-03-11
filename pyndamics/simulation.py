@@ -7,6 +7,9 @@ import pylab
 from copy import deepcopy 
 
 from matplotlib import rc
+import matplotlib.pyplot as plt
+from matplotlib.pyplot import *
+
 size=20
 family='sans-serif'
 
@@ -319,7 +322,7 @@ def vector_field(sim,rescale=False,**kwargs):
         N = sqrt(U**2+V**2)  # there may be a faster numpy "normalize" function
         U, V = U/N, V/N
         
-    figure(figsize=sim.figsize)
+    plt.figure(figsize=sim.figsize)
     Q = quiver(  X, Y, U, V)
     xlabel(sim.components[0].name)
     try:
@@ -753,7 +756,7 @@ class Simulation(object):
         mse=((array(value)-simvals)**2).mean()
         
         if plot:
-            fig=figure(figsize=self.figsize)
+            fig=plt.figure(figsize=self.figsize)
             self.figures.append(fig)
             
             pylab.plot(st,svals,'-o')
@@ -947,18 +950,18 @@ class Simulation(object):
             if c.plot and not self.noplots:
                 
                 if c.plot is True:
-                    fig=figure(count,figsize=self.figsize)
+                    fig=plt.figure(count,figsize=self.figsize)
                     if fig not in self.figures:
                         self.figures.append(fig)
                         
                     self.max_figure=count
-                    clf()
+                    plt.clf()
                     
                     legends[count].append(c.label)
                     count+=1
                     legends[count]=[]
                 else:
-                    fig=figure(c.plot,figsize=self.figsize)
+                    fig=plt.figure(c.plot,figsize=self.figsize)
                     if fig not in self.figures:
                         self.figures.append(fig)
                     
@@ -966,7 +969,7 @@ class Simulation(object):
                         self.max_figure=c.plot
                     
                     if c.plot>=count:
-                        clf()
+                        plt.clf()
                         count+=1
                         legends[count]=[]
                     legends[c.plot].append(c.label)
@@ -983,8 +986,8 @@ class Simulation(object):
                         legends[c.plot].append(c.label+" data")
                 
                 
-                pylab.xlabel(xlabel)
-                pylab.grid(True)
+                plt.xlabel(xlabel)
+                grid(True)
                 
                 ylabel(c.label)
                 gca().yaxis.set_major_formatter(ScalarFormatter(useOffset=False))
@@ -995,7 +998,7 @@ class Simulation(object):
             
             for l in legends:
                 if len(legends[l])>1:
-                    figure(l,figsize=self.figsize)
+                    plt.figure(l,figsize=self.figsize)
                     legend(legends[l],loc='best')
                     ylabel('Value')
               
@@ -1021,7 +1024,7 @@ class Simulation(object):
         
         params=kwargs
         L=len(params)
-        figure(self.max_figure+1,figsize=(7,L))
+        plt.figure(self.max_figure+1,figsize=(7,L))
         self.sliders={}
 
         for i,key in enumerate(sorted(params.keys())):
